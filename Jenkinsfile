@@ -13,19 +13,18 @@ pipeline {
                    
                    '''
             }
-
-           post {
+            post {
               success {
                  archiveArtifacts artifacts: 'java-app/target/*.jar', fingerprint: true
-                 }
-             }   
-          }  
+                }
+            }   
+        }  
         stage('Test') {
             steps {
                 sh './jenkins/test/mvn-test.sh mvn test'
             } 
             
-           post {
+            post {
              always {
                 junit 'java-app/target/surfire-reports/*.xml'
              }
@@ -35,7 +34,6 @@ pipeline {
                 sh './jenkis/push/push.sh' 
             }
         }
-    }
-  }
+      }
+   }
 }
-
