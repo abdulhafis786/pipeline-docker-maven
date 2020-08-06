@@ -19,11 +19,10 @@ pipeline {
                 }
             }   
         }  
-        stage('Test') {
+         stage('Test') {
             steps {
                 sh './jenkins/test/mvn-test.sh mvn test'
             } 
-            
             post {
              always {
                 junit 'java-app/target/surfire-reports/*.xml'
