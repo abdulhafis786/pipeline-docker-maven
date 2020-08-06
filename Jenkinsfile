@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     environment { 
-          PASS = credentials('Dockerhub_pass')
+          PASS = credentials('Dockerhub_pass')  #### Here we add a secret text in Jenkins to store our docker hub password which is passed here as credentials
     }
     stages {
         stage('Build') {
